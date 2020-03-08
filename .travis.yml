@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t saschascata/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true saschascata/docker-react npm run test
